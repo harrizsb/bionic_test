@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <div>
+        <div id="posts"></div>
+    </div>
+
+
+    <script>
+        fetchData()
+
+        function fetchData() {
+            fetch('https://jsonplaceholder.typicode.com/posts/').then(response => {
+                return response.json();
+            }).then(data => {
+                const postsElement = document.querySelector('#posts');
+
+                data.forEach(post => {
+                    const postDiv = document.createElement('div');
+                    postDiv.innerHTML = `
+                    <div id="post-${post.id}">
+        <h2>${post.title}</h2>
+        <p>${post.body}</p>
+        <span onclick="editPost(${post.id})" style="cursor: pointer">Edit</span>
+        </div>
+      `;
+                    postsElement.appendChild(postDiv);
+                });
+            })
+        }
+
+        function editPost(id) {
+            const postElement = document.querySelector(`#post-${id}`);
+
+            fetch('https://jsonplaceholder.typicode.com/posts/' + id).then(response => {
+                return response.json();
+            }).then(data => {
+                const {
+                    title,
+                    body
+                } = data;
+                postElement.innerHTML = `
+        <div id="post-${id}">
+        <input type="text" value="${title}" />
+        <textarea>${body}</textarea>
+        <button onclick="updatePost(${id, body, title})">Update</button>
+        </div>
+        `;
+            })
+        }
+
+        function updatePost(id, body, title) {
+            const postElement = document.querySelector(`#post-${id}`);
+            const input = postElement.querySelector('input');
+            const textarea = postElement.querySelector('textarea');
+
+            fetch('https://jsonplaceholder.typicode.com/posts/' + id, {
+                method: 'PUT',
+                body: JSON.stringify({
+                    title: input.value,
+                    body: textarea.value,
+                    userId: 1
+                }),
+                headers: {
+                    'Content-type': 'application/json; charset=UTF-8',
+                },
+            }).then((response) => response.json()).then((data) => {
+                postElement.innerHTML = `
+        <div id="post-${id}">
+        <h2>${data.title}</h2>
+        <p>${data.body}</p>
+        <span onclick="editPost(${id})" style="cursor: pointer">Edit</span>
+        </div>
+        `;
+            });
+        }
+    </script>
+</body>
+
+</html>
