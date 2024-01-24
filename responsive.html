@@ -72,9 +72,9 @@
 
         <br />
 
-        <div class="flex">
-            <div class="flex" style="background-color: black; flex-direction: column; flex-grow: 1; margin-right: 10px">
-                <div class="blue-bg flex align-items-flex justify-content-flex">4</div>
+        <div class="flex" style="height: 100%">
+            <div class="flex" style="background-color: black; flex-direction: column; flex-grow: 1; margin-right: 10px;">
+                <div class="blue-bg flex align-items-flex justify-content-flex" style="flex-grow: 1;">4</div>
                 <div class="flex flex-row" style="margin-top: 10px">
                     <div class="blue-bg flex align-items-flex justify-content-flex" style="margin-right: 1%">5</div>
                     <div class="blue-bg flex align-items-flex justify-content-flex">6</div>
@@ -84,14 +84,25 @@
             <div class="flex f8-10" style="flex-direction: column; flex-grow: 1; margin-left: 10px">
                 <div class="blue-bg flex align-items-flex justify-content-flex" style="margin-bottom: 10px">8</div>
                 <div class="blue-bg flex align-items-flex justify-content-flex" style="margin-bottom: 10px">9</div>
-                <div class="blue-bg flex align-items-flex justify-content-flex" style="margin-bottom: 10px">10</div>
+                <div class="blue-bg flex align-items-flex justify-content-flex">10</div>
             </div>
         </div>
+    </div>
 
-        <div class="mobile-hidden" style="position: relative; background-color: grey; height: 150px; margin-top: 10px; width: 70%">
-            <div class="flex">
-                <div style="background-color: red; position: absolute; top: 20%; right: -5%; width: 50px; height: 50px;"></div>
+    <div class="mobile-hidden" style="position: relative; background-color: blue; height: 150px; margin-top: 10px; width: 50%; border: black 10px solid">
+        <div class="flex">
+            <div style="position: relative;">
+
+                <div style="background-color: red; position: absolute; top: 0; left: 0; width: 100px; height: 50px;"></div>
+
+                <div style="background-color: white; position: absolute; top: 20px; left: 50px; width: 100px; height: 100px;"></div>
+
+                <div style="background-color: red; position: absolute; top: 80px; left: 80px; width: 150px; height: 70px;"></div>
             </div>
+
+            <div style="background-color: red; position: absolute; top: 0%; right: -15%; width: 100px; height: 50px;"></div>
+
+            <div style="background-color: red; position: absolute; top: 50%; right: -40%; width: 100px; height: 50px;"></div>
         </div>
     </div>
 </body>
